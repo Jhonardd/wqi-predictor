@@ -53,7 +53,7 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json
+    data = request.get_json()
     target_date = data.get('date')
     model_type = data.get('model', 'cnn_lstm')
     
