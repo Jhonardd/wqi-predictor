@@ -880,7 +880,13 @@
                         model: modelSelect
                     })
                 });
-                
+
+                // Add this check:
+                if (!response.ok) {
+                    const errorData = await response.text();
+                    throw new Error(`Server error: ${response.status} - ${errorData}`);
+                }
+
                 const result = await response.json();
                 
                 if (result.status === 'success') {
@@ -930,10 +936,12 @@
                     `;
                 }
             } catch (error) {
+                console.error('Full error:', error);
                 resultDiv.innerHTML = `
                     <div class="result-content">
                         <h3>Error</h3>
                         <p>${error.message}</p>
+                        <p>Please check your connection and try again.</p>
                     </div>
                 `;
             }
