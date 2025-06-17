@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Model files
+*.pth
+
+# Jupyter notebooks
+*.ipynb
+
+# Environment files
+.env
+
+# System junk
+.DS_Store
+Thumbs.db
